@@ -37,17 +37,23 @@ class HomePage extends StatelessWidget {
               child: Container(
                   height: MediaQuery.of(context).size.height / 1.4,
                   decoration: BoxDecoration(
-                    color: Colors.black45,
+                    color: const Color.fromRGBO(212, 236, 221, 1),
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: ListView.builder(
+                    padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
                     itemCount: 20,
                     itemBuilder: (context, index) {
                       return Column(
                         children: [
                           Container(
-                            color: Colors.red[200],
+                            padding: const EdgeInsets.all(5),
+                            decoration: BoxDecoration(
+                              color: const Color.fromRGBO(52, 91, 99, 1),
+                              borderRadius: BorderRadius.circular(10),
+                            ),
                             child: ListTile(
+                              //this list will have 1 demo list not null
                               leading: CircleAvatar(
                                 child: Text('$index'),
                               ),
