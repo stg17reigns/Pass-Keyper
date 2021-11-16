@@ -66,8 +66,12 @@ class HomePage extends StatelessWidget {
                                   child: Text('${index + 1}'),
                                 ),
                                 title: Text(
-                                  'Facebook ${index + 1}',
+                                  'Group ${index + 1}',
                                   style: const TextStyle(color: Colors.white),
+                                ),
+                                trailing: const Icon(
+                                  Icons.arrow_right_rounded,
+                                  size: 40,
                                 ),
                               ),
                             ),
@@ -109,7 +113,7 @@ class HomePage extends StatelessWidget {
               CustomNavigationBarItem(
                 icon: const Icon(Icons.new_label),
                 title: const Text(
-                  'New Article',
+                  'New Group',
                   style: TextStyle(color: Colors.black),
                 ),
               ),
