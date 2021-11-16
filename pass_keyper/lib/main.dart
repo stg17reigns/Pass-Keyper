@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:pass_keyper/Pages/settings_page.dart';
 import 'package:pass_keyper/Services/home_bindings.dart';
 
 import 'Pages/home_page.dart';
@@ -32,6 +33,11 @@ class MyApp extends StatelessWidget {
           name: '/home',
           page: () => const HomePage(),
           binding: HomeBinding(),
+        ),
+        GetPage(
+          name: '/settings',
+          page: () => const SettingsPage(),
+         // binding: HomeBinding(),
         )
       ],
     );

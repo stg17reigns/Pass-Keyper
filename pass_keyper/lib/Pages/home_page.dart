@@ -91,7 +91,7 @@ class HomePage extends StatelessWidget {
           child: CustomNavigationBar(
             currentIndex: indexhandler.index.value,
             onTap: (navindex) {
-              return indexhandler.incIndex(navindex);
+              return Get.toNamed('/settings');
             }, //change pages
             isFloating: true,
             elevation: 1,
@@ -118,9 +118,9 @@ class HomePage extends StatelessWidget {
                 ),
               ),
               CustomNavigationBarItem(
-                icon: const Icon(Icons.login_rounded),
+                icon: const Icon(Icons.settings),
                 title: const Text(
-                  'Login',
+                  'Settings',
                   style: TextStyle(color: Colors.black),
                 ),
               )
