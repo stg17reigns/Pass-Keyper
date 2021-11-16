@@ -37,7 +37,7 @@ class HomePage extends StatelessWidget {
               child: Container(
                   height: MediaQuery.of(context).size.height / 1.4,
                   decoration: BoxDecoration(
-                    color: const Color.fromRGBO(212, 236, 221, 1),
+                    color: Colors.white,
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: ListView.builder(
@@ -46,20 +46,29 @@ class HomePage extends StatelessWidget {
                     itemBuilder: (context, index) {
                       return Column(
                         children: [
-                          Container(
-                            padding: const EdgeInsets.all(5),
-                            decoration: BoxDecoration(
-                              color: const Color.fromRGBO(52, 91, 99, 1),
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                            child: ListTile(
-                              //this list will have 1 demo list not null
-                              leading: CircleAvatar(
-                                child: Text('$index'),
+                          InkWell(
+                            onTap: () {
+                              // ignore: avoid_print
+                              return print(index);
+                            },
+                            child: Container(
+                              padding: const EdgeInsets.all(5),
+                              decoration: BoxDecoration(
+                                color: const Color.fromRGBO(63, 51, 81, 1),
+                                //color: Colors.red[300],
+                                borderRadius: BorderRadius.circular(10),
                               ),
-                              title: Text(
-                                'Facebook $index',
-                                style: const TextStyle(color: Colors.white),
+                              child: ListTile(
+                                //this list will have 1 demo list not null
+                                leading: CircleAvatar(
+                                  backgroundColor:
+                                      const Color.fromRGBO(31, 29, 54, 1),
+                                  child: Text('${index + 1}'),
+                                ),
+                                title: Text(
+                                  'Facebook ${index + 1}',
+                                  style: const TextStyle(color: Colors.white),
+                                ),
                               ),
                             ),
                           ),
