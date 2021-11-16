@@ -4,23 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pass_keyper/Controllers/navbar_controller.dart';
 
+//option to create group or single 
 class GroupPage extends StatelessWidget {
   const GroupPage({Key? key}) : super(key: key);
-  Widget? _tabFunctions(int index) {
-    switch (index) {
-      case 0:
-        Get.toNamed('/home');
-        break;
-      case 1:
-        Get.toNamed('/home');
-        break;
-      case 2:
-        Get.toNamed('/settings');
-        break;
-      default:
-    }
-  }
-
+  
   @override
   Widget build(BuildContext context) {
     final indexhandler = Get.find<NavBarConteroller>();

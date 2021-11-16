@@ -73,21 +73,20 @@ class HomePage extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(10),
                               ),
                               child: ListTile(
-                                //this list will have 1 demo list not null
-                                leading: CircleAvatar(
-                                  backgroundColor:
-                                      const Color.fromRGBO(31, 29, 54, 1),
-                                  child: Text('${index + 1}'),
-                                ),
-                                title: Text(
-                                  'Group ${index + 1}',
-                                  style: const TextStyle(color: Colors.white),
-                                ),
-                                trailing: const Icon(
-                                  Icons.arrow_right_rounded,
-                                  size: 40,
-                                ),
-                              ),
+                                  //this list will have 1 demo list not null
+                                  leading: CircleAvatar(
+                                    backgroundColor:
+                                        const Color.fromRGBO(31, 29, 54, 1),
+                                    child: Text('${index + 1}'),
+                                  ),
+                                  title: Text(
+                                    'Account ${index + 1}',
+                                    style: const TextStyle(color: Colors.white),
+                                  ),
+                                  trailing: const CircleAvatar(
+                                    radius: 10,
+                                    backgroundColor: Colors.red,
+                                  )),
                             ),
                           ),
                           const SizedBox(
@@ -127,7 +126,7 @@ class HomePage extends StatelessWidget {
               CustomNavigationBarItem(
                 icon: const Icon(Icons.new_label),
                 title: const Text(
-                  'New Group',
+                  'New Account',
                   style: TextStyle(color: Colors.black),
                 ),
               ),
