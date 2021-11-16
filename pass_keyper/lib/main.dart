@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:pass_keyper/Models/password_model.dart';
+import 'package:pass_keyper/Pages/group_page.dart';
 import 'package:pass_keyper/Pages/settings_page.dart';
 import 'package:pass_keyper/Services/home_bindings.dart';
 
@@ -13,6 +14,7 @@ Future main() async {
 
   await Hive.initFlutter();
   Hive.registerAdapter(PassWordManagerAdapter());
+  await Hive.openBox<PassWordManager>('Passwords');
   runApp(const MyApp());
 }
 
@@ -39,7 +41,12 @@ class MyApp extends StatelessWidget {
         GetPage(
           name: '/settings',
           page: () => const SettingsPage(),
-          // binding: HomeBinding(),
+          binding: HomeBinding(),
+        ),
+        GetPage(
+          name: '/group',
+          page: () => const GroupPage(),
+          binding: HomeBinding(),
         )
       ],
     );

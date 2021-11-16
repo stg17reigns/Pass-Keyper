@@ -7,6 +7,20 @@ import 'package:pass_keyper/Controllers/navbar_controller.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
+  Widget? _tabFunctions(int index) {
+    switch (index) {
+      case 0:
+        Get.toNamed('/home');
+        break;
+      case 1:
+        Get.toNamed('/group');
+        break;
+      case 2:
+        Get.toNamed('/settings');
+        break;
+      default:
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -91,7 +105,7 @@ class HomePage extends StatelessWidget {
           child: CustomNavigationBar(
             currentIndex: indexhandler.index.value,
             onTap: (navindex) {
-              return Get.toNamed('/settings');
+              return _tabFunctions(navindex);
             }, //change pages
             isFloating: true,
             elevation: 1,
