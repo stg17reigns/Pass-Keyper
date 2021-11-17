@@ -14,7 +14,7 @@ class PassWordManager extends HiveObject {
   @HiveField(3)
   late String hints;
   @HiveField(4)
-  late Color colorTag;
+  late int colorTag;
   @HiveField(5)
   late DateTime createdDate;
 }

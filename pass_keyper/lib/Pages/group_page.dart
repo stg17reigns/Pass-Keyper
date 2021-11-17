@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:get/get.dart';
 import 'package:pass_keyper/Controllers/group_controller.dart';
+import 'package:pass_keyper/Models/box_model.dart';
+import 'package:pass_keyper/Models/password_model.dart';
 
 class GroupPage extends StatelessWidget {
   const GroupPage({Key? key}) : super(key: key);
@@ -78,9 +80,6 @@ class GroupPage extends StatelessWidget {
                       hintText: 'eg: Password',
                       suffixIcon: InkWell(
                         onTap: () {
-                          // print('change');
-                          // print('$accName' + '$passWord');
-                          //print(groupController.obsecuretext.value);
                           groupController.obsecuretext.value == true
                               ? groupController.obsecuretext.value = false
                               : groupController.obsecuretext.value = true;
@@ -153,6 +152,17 @@ class GroupPage extends StatelessWidget {
                             confirm: ElevatedButton(
                               onPressed: () {
                                 print('done');
+                                final box = Boxes.getAccounts();
+                                final account = PassWordManager()
+                                  ..accountName = 'k'
+                                  ..emailId = 'hj@gmail.com'
+                                  ..passWord = 'kkkk'
+                                  ..hints = 'kkkl'
+                                  ..colorTag = 0xFFF00000
+                                  ..createdDate = DateTime.now();
+                                //box.put('A1', account);
+                                print(box.get('A1')?.emailId);
+                                print(Boxes.getAccounts());
                                 return Get.back();
                               },
                               child: const Text('Done'),

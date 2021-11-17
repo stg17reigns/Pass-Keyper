@@ -34,10 +34,6 @@ class HomePage extends StatelessWidget {
               child: Container(
                 height: MediaQuery.of(context).size.height / 13,
                 alignment: Alignment.center,
-                // decoration: BoxDecoration(
-                //   color: Colors.purple,
-                //   borderRadius: BorderRadius.circular(20),
-                // ),
                 child: const Text(
                   'Pass-Kryper',
                   style: TextStyle(
@@ -64,6 +60,7 @@ class HomePage extends StatelessWidget {
                             InkWell(
                               onTap: () {
                                 // ignore: avoid_print
+                                //go in detail page of account
                                 return print(index);
                               },
                               child: Container(

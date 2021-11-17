@@ -21,7 +21,7 @@ class PassWordManagerAdapter extends TypeAdapter<PassWordManager> {
       ..emailId = fields[1] as String
       ..passWord = fields[2] as String
       ..hints = fields[3] as String
-      ..colorTag = fields[4] as Color
+      ..colorTag = fields[4] as int
       ..createdDate = fields[5] as DateTime;
   }
 
