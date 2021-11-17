@@ -46,57 +46,59 @@ class HomePage extends StatelessWidget {
                 ),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(5, 15, 5, 15),
-              child: Container(
-                  height: MediaQuery.of(context).size.height / 1.4,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: ListView.builder(
-                    padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
-                    itemCount: 20,
-                    itemBuilder: (context, index) {
-                      return Column(
-                        children: [
-                          InkWell(
-                            onTap: () {
-                              // ignore: avoid_print
-                              return print(index);
-                            },
-                            child: Container(
-                              padding: const EdgeInsets.all(5),
-                              decoration: BoxDecoration(
-                                color: const Color.fromRGBO(63, 51, 81, 1),
-                                //color: Colors.red[300],
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                              child: ListTile(
-                                //this list will have 1 demo list not null
-                                leading: CircleAvatar(
-                                  backgroundColor:
-                                      const Color.fromRGBO(31, 29, 54, 1),
-                                  child: Text('${index + 1}'),
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(5, 15, 5, 15),
+                child: Container(
+                    height: MediaQuery.of(context).size.height / 1.4,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: ListView.builder(
+                      padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
+                      itemCount: 20,
+                      itemBuilder: (context, index) {
+                        return Column(
+                          children: [
+                            InkWell(
+                              onTap: () {
+                                // ignore: avoid_print
+                                return print(index);
+                              },
+                              child: Container(
+                                padding: const EdgeInsets.all(5),
+                                decoration: BoxDecoration(
+                                  color: const Color.fromRGBO(63, 51, 81, 1),
+                                  //color: Colors.red[300],
+                                  borderRadius: BorderRadius.circular(10),
                                 ),
-                                title: Text(
-                                  'Account ${index + 1}',
-                                  style: const TextStyle(color: Colors.white),
-                                ),
-                                trailing: const CircleAvatar(
-                                  radius: 10,
-                                  backgroundColor: Colors.red,
+                                child: ListTile(
+                                  //this list will have 1 demo list not null
+                                  leading: CircleAvatar(
+                                    backgroundColor:
+                                        const Color.fromRGBO(31, 29, 54, 1),
+                                    child: Text('${index + 1}'),
+                                  ),
+                                  title: Text(
+                                    'Account ${index + 1}',
+                                    style: const TextStyle(color: Colors.white),
+                                  ),
+                                  trailing: const CircleAvatar(
+                                    radius: 10,
+                                    backgroundColor: Colors.red,
+                                  ),
                                 ),
                               ),
                             ),
-                          ),
-                          const SizedBox(
-                            height: 2,
-                          )
-                        ],
-                      );
-                    },
-                  )),
+                            const SizedBox(
+                              height: 2,
+                            )
+                          ],
+                        );
+                      },
+                    )),
+              ),
             ), //scrollable accounts
           ],
         ),

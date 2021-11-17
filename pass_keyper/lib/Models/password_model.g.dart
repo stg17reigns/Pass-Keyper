@@ -18,25 +18,28 @@ class PassWordManagerAdapter extends TypeAdapter<PassWordManager> {
     };
     return PassWordManager()
       ..accountName = fields[0] as String
-      ..passWord = fields[1] as String
-      ..hints = fields[2] as String
-      ..colorTag = fields[3] as Color
-      ..createdDate = fields[4] as DateTime;
+      ..emailId = fields[1] as String
+      ..passWord = fields[2] as String
+      ..hints = fields[3] as String
+      ..colorTag = fields[4] as Color
+      ..createdDate = fields[5] as DateTime;
   }
 
   @override
   void write(BinaryWriter writer, PassWordManager obj) {
     writer
-      ..writeByte(5)
+      ..writeByte(6)
       ..writeByte(0)
       ..write(obj.accountName)
       ..writeByte(1)
-      ..write(obj.passWord)
+      ..write(obj.emailId)
       ..writeByte(2)
-      ..write(obj.hints)
+      ..write(obj.passWord)
       ..writeByte(3)
-      ..write(obj.colorTag)
+      ..write(obj.hints)
       ..writeByte(4)
+      ..write(obj.colorTag)
+      ..writeByte(5)
       ..write(obj.createdDate);
   }
 

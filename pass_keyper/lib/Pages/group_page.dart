@@ -3,16 +3,20 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:get/get.dart';
-import 'package:pass_keyper/Controllers/navbar_controller.dart';
+import 'package:pass_keyper/Controllers/group_controller.dart';
 
-//option to create group or single
 class GroupPage extends StatelessWidget {
   const GroupPage({Key? key}) : super(key: key);
 
 //make controller for this page
   @override
   Widget build(BuildContext context) {
-    bool obsecuretext = true;
+    TextEditingController accName = TextEditingController();
+    TextEditingController emailId = TextEditingController();
+    TextEditingController passWord = TextEditingController();
+    TextEditingController hintMy = TextEditingController();
+    //bool obsecuretext = true;
+    final obsecuretextController = Get.find<GroupController>();
     Color myColor = Colors.red;
     return Scaffold(
       body: Center(
@@ -24,7 +28,7 @@ class GroupPage extends StatelessWidget {
             borderRadius: BorderRadius.circular(10),
           ),
           child: Padding(
-            padding: const EdgeInsets.all(10.0),
+            padding: const EdgeInsets.all(8.0),
             child: Column(
               //mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -34,7 +38,27 @@ class GroupPage extends StatelessWidget {
                   style: TextStyle(
                       color: Colors.black, fontWeight: FontWeight.bold),
                 ),
-                const TextField(
+                TextField(
+                  controller: accName,
+                  cursorColor: Colors.amber,
+                  decoration: const InputDecoration(
+                    hintText: 'eg: Facebook',
+                  ),
+                  textCapitalization: TextCapitalization.words,
+                ),
+                const SizedBox(
+                  height: 15,
+                ),
+                const Text(
+                  'Email Id',
+                  style: TextStyle(
+                      color: Colors.black, fontWeight: FontWeight.bold),
+                ),
+                TextField(
+                  decoration: const InputDecoration(
+                    hintText: 'eg: My_Name@stg.com',
+                  ),
+                  controller: emailId,
                   cursorColor: Colors.amber,
                   textCapitalization: TextCapitalization.words,
                 ),
@@ -46,21 +70,40 @@ class GroupPage extends StatelessWidget {
                   style: TextStyle(
                       color: Colors.black, fontWeight: FontWeight.bold),
                 ),
-                TextField(
-                  obscuringCharacter: '\$',
-                  decoration: InputDecoration(
-                    suffixIcon: Icon(
-                      obsecuretext == true
-                          ? Icons.no_encryption_gmailerrorred_outlined
-                          : Icons.enhanced_encryption_outlined,
-                      color: Colors.white,
+                Obx(() {
+                  return TextField(
+                    obscuringCharacter: '\$',
+                    controller: passWord,
+                    decoration: InputDecoration(
+                      hintText: 'eg: Password',
+                      suffixIcon: InkWell(
+                        onTap: () {
+                          // print('change');
+                          // print('$accName' + '$passWord');
+                          //print(obsecuretextController.obsecuretext.value);
+                          obsecuretextController.obsecuretext.value == true
+                              ? obsecuretextController.obsecuretext.value =
+                                  false
+                              : obsecuretextController.obsecuretext.value =
+                                  true;
+                        },
+                        child: obsecuretextController.obsecuretext.value == true
+                            ? const Icon(
+                                Icons.visibility_off,
+                                color: Colors.white,
+                              )
+                            : const Icon(
+                                Icons.visibility,
+                                color: Colors.white,
+                              ),
+                      ),
                     ),
-                  ),
-                  cursorColor: Colors.amber,
-                  onTap: () => obsecuretext == true ? false : true,
-                  obscureText: obsecuretext, //make obscure off button
-                  textCapitalization: TextCapitalization.words,
-                ),
+                    cursorColor: Colors.amber,
+                    obscureText: obsecuretextController
+                        .obsecuretext.value, //make obscure off button
+                    textCapitalization: TextCapitalization.words,
+                  );
+                }),
                 const SizedBox(
                   height: 15,
                 ),
@@ -69,13 +112,17 @@ class GroupPage extends StatelessWidget {
                   style: TextStyle(
                       color: Colors.black, fontWeight: FontWeight.bold),
                 ),
-                const TextField(
+                TextField(
+                  decoration: const InputDecoration(
+                    hintText: 'eg: First_Special_Char_Last',
+                  ),
+                  controller: hintMy,
                   cursorColor: Colors.amber,
                   textCapitalization: TextCapitalization.words,
                 ),
                 Center(
                   child: Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding: const EdgeInsets.fromLTRB(0, 5, 0, 0),
                     child: Container(
                       height: 20,
                       width: 200,
@@ -88,7 +135,7 @@ class GroupPage extends StatelessWidget {
                 ),
                 Center(
                   child: Padding(
-                    padding: const EdgeInsets.all(30),
+                    padding: const EdgeInsets.all(10),
                     child: InkWell(
                       onTap: () {
                         // ignore: avoid_print

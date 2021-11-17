@@ -8,11 +8,13 @@ class PassWordManager extends HiveObject {
   @HiveField(0)
   late String accountName;
   @HiveField(1)
-  late String passWord;
+  late String emailId;
   @HiveField(2)
-  late String hints;
+  late String passWord;
   @HiveField(3)
-  late Color colorTag;
+  late String hints;
   @HiveField(4)
+  late Color colorTag;
+  @HiveField(5)
   late DateTime createdDate;
 }
