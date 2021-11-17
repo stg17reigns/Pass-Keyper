@@ -16,8 +16,8 @@ class GroupPage extends StatelessWidget {
     TextEditingController passWord = TextEditingController();
     TextEditingController hintMy = TextEditingController();
     //bool obsecuretext = true;
-    final obsecuretextController = Get.find<GroupController>();
-    Color myColor = Colors.red;
+    final groupController = Get.find<GroupController>();
+    //Color myColor = Colors.red;
     return Scaffold(
       body: Center(
         child: Container(
@@ -29,49 +29,49 @@ class GroupPage extends StatelessWidget {
           ),
           child: Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Column(
-              //mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Text(
-                  'Account Name',
-                  style: TextStyle(
-                      color: Colors.black, fontWeight: FontWeight.bold),
-                ),
-                TextField(
-                  controller: accName,
-                  cursorColor: Colors.amber,
-                  decoration: const InputDecoration(
-                    hintText: 'eg: Facebook',
+            child: Obx(() {
+              return Column(
+                //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text(
+                    'Account Name',
+                    style: TextStyle(
+                        color: Colors.black, fontWeight: FontWeight.bold),
                   ),
-                  textCapitalization: TextCapitalization.words,
-                ),
-                const SizedBox(
-                  height: 15,
-                ),
-                const Text(
-                  'Email Id',
-                  style: TextStyle(
-                      color: Colors.black, fontWeight: FontWeight.bold),
-                ),
-                TextField(
-                  decoration: const InputDecoration(
-                    hintText: 'eg: My_Name@stg.com',
+                  TextField(
+                    controller: accName,
+                    cursorColor: Colors.amber,
+                    decoration: const InputDecoration(
+                      hintText: 'eg: Facebook',
+                    ),
+                    textCapitalization: TextCapitalization.words,
                   ),
-                  controller: emailId,
-                  cursorColor: Colors.amber,
-                  textCapitalization: TextCapitalization.words,
-                ),
-                const SizedBox(
-                  height: 15,
-                ),
-                const Text(
-                  'Password',
-                  style: TextStyle(
-                      color: Colors.black, fontWeight: FontWeight.bold),
-                ),
-                Obx(() {
-                  return TextField(
+                  const SizedBox(
+                    height: 15,
+                  ),
+                  const Text(
+                    'Email Id',
+                    style: TextStyle(
+                        color: Colors.black, fontWeight: FontWeight.bold),
+                  ),
+                  TextField(
+                    decoration: const InputDecoration(
+                      hintText: 'eg: My_Name@stg.com',
+                    ),
+                    controller: emailId,
+                    cursorColor: Colors.amber,
+                    textCapitalization: TextCapitalization.words,
+                  ),
+                  const SizedBox(
+                    height: 15,
+                  ),
+                  const Text(
+                    'Password',
+                    style: TextStyle(
+                        color: Colors.black, fontWeight: FontWeight.bold),
+                  ),
+                  TextField(
                     obscuringCharacter: '\$',
                     controller: passWord,
                     decoration: InputDecoration(
@@ -80,14 +80,12 @@ class GroupPage extends StatelessWidget {
                         onTap: () {
                           // print('change');
                           // print('$accName' + '$passWord');
-                          //print(obsecuretextController.obsecuretext.value);
-                          obsecuretextController.obsecuretext.value == true
-                              ? obsecuretextController.obsecuretext.value =
-                                  false
-                              : obsecuretextController.obsecuretext.value =
-                                  true;
+                          //print(groupController.obsecuretext.value);
+                          groupController.obsecuretext.value == true
+                              ? groupController.obsecuretext.value = false
+                              : groupController.obsecuretext.value = true;
                         },
-                        child: obsecuretextController.obsecuretext.value == true
+                        child: groupController.obsecuretext.value == true
                             ? const Icon(
                                 Icons.visibility_off,
                                 color: Colors.white,
@@ -99,62 +97,79 @@ class GroupPage extends StatelessWidget {
                       ),
                     ),
                     cursorColor: Colors.amber,
-                    obscureText: obsecuretextController
+                    obscureText: groupController
                         .obsecuretext.value, //make obscure off button
                     textCapitalization: TextCapitalization.words,
-                  );
-                }),
-                const SizedBox(
-                  height: 15,
-                ),
-                const Text(
-                  'Hint',
-                  style: TextStyle(
-                      color: Colors.black, fontWeight: FontWeight.bold),
-                ),
-                TextField(
-                  decoration: const InputDecoration(
-                    hintText: 'eg: First_Special_Char_Last',
                   ),
-                  controller: hintMy,
-                  cursorColor: Colors.amber,
-                  textCapitalization: TextCapitalization.words,
-                ),
-                Center(
-                  child: Padding(
-                    padding: const EdgeInsets.fromLTRB(0, 5, 0, 0),
-                    child: Container(
-                      height: 20,
-                      width: 200,
-                      color: Colors.black,
-                      child: const Center(
-                        child: Text('Change Color as per Priority'),
+                  const SizedBox(
+                    height: 15,
+                  ),
+                  const Text(
+                    'Hint',
+                    style: TextStyle(
+                        color: Colors.black, fontWeight: FontWeight.bold),
+                  ),
+                  TextField(
+                    decoration: const InputDecoration(
+                      hintText: 'eg: First_Special_Char_Last',
+                    ),
+                    controller: hintMy,
+                    cursorColor: Colors.amber,
+                    textCapitalization: TextCapitalization.words,
+                  ),
+                  Center(
+                    child: Padding(
+                      padding: const EdgeInsets.fromLTRB(0, 5, 0, 0),
+                      child: Container(
+                        height: 20,
+                        width: 200,
+                        color: Colors.black,
+                        child: const Center(
+                          child: Text('Change Color as per Priority'),
+                        ),
                       ),
                     ),
                   ),
-                ),
-                Center(
-                  child: Padding(
-                    padding: const EdgeInsets.all(10),
-                    child: InkWell(
-                      onTap: () {
-                        // ignore: avoid_print
-                        Get.defaultDialog(title: 'Select Color');
-                        ColorPicker(
-                          pickerColor: myColor,
-                          onColorChanged: (color) => myColor = color,
-                        );
-                        return print('change color');
-                      },
-                      child: CircleAvatar(
-                        radius: 15,
-                        backgroundColor: myColor,
+                  Center(
+                    child: Padding(
+                      padding: const EdgeInsets.all(10),
+                      child: InkWell(
+                        onTap: () {
+                          // ignore: avoid_print
+                          Get.defaultDialog(
+                            title: 'Select Color',
+                            content: Column(
+                              children: [
+                                ColorPicker(
+                                  enableAlpha: false,
+                                  // ignore: deprecated_member_use
+                                  showLabel: false,
+                                  pickerColor: groupController.myColor.value,
+                                  onColorChanged: (color) =>
+                                      groupController.myColor.value = color,
+                                ),
+                              ],
+                            ),
+                            confirm: ElevatedButton(
+                              onPressed: () {
+                                print('done');
+                                return Get.back();
+                              },
+                              child: const Text('Done'),
+                            ),
+                          );
+                          return print('change color');
+                        },
+                        child: CircleAvatar(
+                          radius: 15,
+                          backgroundColor: groupController.myColor.value,
+                        ),
                       ),
                     ),
                   ),
-                ),
-              ],
-            ),
+                ],
+              );
+            }),
           ),
         ),
       ),
