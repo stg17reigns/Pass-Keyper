@@ -137,11 +137,16 @@ class GroupPage extends StatelessWidget {
                       child: InkWell(
                         onTap: () {
                           // ignore: avoid_print
+
                           Get.defaultDialog(
                             title: 'Select Color',
                             content: Column(
                               children: [
                                 ColorPicker(
+                                  colorPickerWidth: 200,
+                                  pickerAreaHeightPercent: 0.5,
+                                  pickerAreaBorderRadius:
+                                      BorderRadius.circular(10),
                                   enableAlpha: false,
                                   // ignore: deprecated_member_use
                                   showLabel: false,
@@ -192,8 +197,8 @@ class GroupPage extends StatelessWidget {
                 ..colorTag = myColor.value
                 ..createdDate = DateTime.now();
               box.add(account);
-              // box.clear();
-              //do this at start of the page
+              //box.clear();
+              //do this at start of the page use (Getx Prefernce)
               indexhandler.badgeConuter.value = box.length;
               print(box.get('A1')?.colorTag);
               print(Boxes.getAccounts());
