@@ -86,7 +86,7 @@ class HomePage extends StatelessWidget {
             borderRadius: const Radius.circular(20),
             items: [
               CustomNavigationBarItem(
-                badgeCount: indexhandler.index.value,
+                badgeCount: indexhandler.badgeConuter.value,
                 showBadge: true, //imp use
                 icon: const Icon(Icons.home),
                 title: const Text(

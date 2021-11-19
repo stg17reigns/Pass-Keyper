@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:get/get.dart';
 import 'package:pass_keyper/Controllers/group_controller.dart';
+import 'package:pass_keyper/Controllers/navbar_controller.dart';
 import 'package:pass_keyper/Models/box_model.dart';
 import 'package:pass_keyper/Models/password_model.dart';
 
@@ -19,6 +20,7 @@ class GroupPage extends StatelessWidget {
     TextEditingController hintMy = TextEditingController();
     //bool obsecuretext = true;
     final groupController = Get.find<GroupController>();
+    final indexhandler = Get.find<NavBarConteroller>();
     Color myColor = Colors.red;
     return Scaffold(
       body: Center(
@@ -154,17 +156,6 @@ class GroupPage extends StatelessWidget {
                             confirm: ElevatedButton(
                               onPressed: () {
                                 print('done');
-                                final box = Boxes.getAccounts();
-                                final account = PassWordManager()
-                                  ..accountName = 'Instagram'
-                                  ..emailId = 'hj@gmail.com'
-                                  ..passWord = 'kkkk'
-                                  ..hints = 'kkkl'
-                                  ..colorTag = myColor.value
-                                  ..createdDate = DateTime.now();
-                                box.add(account);
-                                print(box.get('A1')?.colorTag);
-                                print(Boxes.getAccounts());
                                 return Get.back();
                               },
                               child: const Text('Done'),
@@ -187,6 +178,21 @@ class GroupPage extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
+          //not done until every field filed otherwise not add to hive
+          final box = Boxes.getAccounts();
+          final account = PassWordManager()
+            ..accountName = '${accName.text}'
+            ..emailId = '${emailId.text}'
+            ..passWord = '${passWord.text}'
+            ..hints = '${hintMy.text}'
+            ..colorTag = myColor.value
+            ..createdDate = DateTime.now();
+          box.add(account);
+          // box.clear();
+          indexhandler.badgeConuter.value = box.length;
+          print(box.get('A1')?.colorTag);
+          print(Boxes.getAccounts());
+
           Get.toNamed('/home');
           return;
         },
