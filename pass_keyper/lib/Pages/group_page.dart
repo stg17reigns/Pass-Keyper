@@ -19,7 +19,7 @@ class GroupPage extends StatelessWidget {
     TextEditingController hintMy = TextEditingController();
     //bool obsecuretext = true;
     final groupController = Get.find<GroupController>();
-    //Color myColor = Colors.red;
+    Color myColor = Colors.red;
     return Scaffold(
       body: Center(
         child: Container(
@@ -144,8 +144,10 @@ class GroupPage extends StatelessWidget {
                                   // ignore: deprecated_member_use
                                   showLabel: false,
                                   pickerColor: groupController.myColor.value,
-                                  onColorChanged: (color) =>
-                                      groupController.myColor.value = color,
+                                  onColorChanged: (color) {
+                                    groupController.myColor.value = color;
+                                    myColor = color;
+                                  },
                                 ),
                               ],
                             ),
@@ -154,14 +156,14 @@ class GroupPage extends StatelessWidget {
                                 print('done');
                                 final box = Boxes.getAccounts();
                                 final account = PassWordManager()
-                                  ..accountName = 'k'
+                                  ..accountName = 'Instagram'
                                   ..emailId = 'hj@gmail.com'
                                   ..passWord = 'kkkk'
                                   ..hints = 'kkkl'
-                                  ..colorTag = 0xFFF00000
+                                  ..colorTag = myColor.value
                                   ..createdDate = DateTime.now();
-                                //box.put('A1', account);
-                                print(box.get('A1')?.emailId);
+                                box.add(account);
+                                print(box.get('A1')?.colorTag);
                                 print(Boxes.getAccounts());
                                 return Get.back();
                               },
