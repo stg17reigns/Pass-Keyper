@@ -176,31 +176,54 @@ class GroupPage extends StatelessWidget {
           ),
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          //not done until every field filed otherwise not add to hive
-          final box = Boxes.getAccounts();
-          final account = PassWordManager()
-            ..accountName = '${accName.text}'
-            ..emailId = '${emailId.text}'
-            ..passWord = '${passWord.text}'
-            ..hints = '${hintMy.text}'
-            ..colorTag = myColor.value
-            ..createdDate = DateTime.now();
-          box.add(account);
-          // box.clear();
-          indexhandler.badgeConuter.value = box.length;
-          print(box.get('A1')?.colorTag);
-          print(Boxes.getAccounts());
+      floatingActionButton: Row(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          FloatingActionButton(
+            heroTag: 'Save',
+            onPressed: () {
+              //not done until every field filed otherwise not add to hive
+              final box = Boxes.getAccounts();
+              final account = PassWordManager()
+                ..accountName = '${accName.text}'
+                ..emailId = '${emailId.text}'
+                ..passWord = '${passWord.text}'
+                ..hints = '${hintMy.text}'
+                ..colorTag = myColor.value
+                ..createdDate = DateTime.now();
+              box.add(account);
+              // box.clear();
+              //do this at start of the page
+              indexhandler.badgeConuter.value = box.length;
+              print(box.get('A1')?.colorTag);
+              print(Boxes.getAccounts());
 
-          Get.toNamed('/home');
-          return;
-        },
-        child: const Icon(
-          Icons.done,
-          size: 25,
-          color: Colors.black,
-        ),
+              Get.toNamed('/home');
+              return;
+            },
+            child: const Icon(
+              Icons.done,
+              size: 25,
+              color: Colors.black,
+            ),
+          ),
+          SizedBox(
+            width: 20,
+          ),
+          FloatingActionButton(
+            heroTag: 'Go_back',
+            backgroundColor: Colors.red,
+            onPressed: () {
+              Get.toNamed('/home');
+              return;
+            },
+            child: const Icon(
+              Icons.highlight_remove_rounded,
+              size: 25,
+              color: Colors.black,
+            ),
+          ),
+        ],
       ),
     );
   }
