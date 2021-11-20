@@ -188,16 +188,8 @@ class GroupPage extends StatelessWidget {
             heroTag: 'Save',
             onPressed: () {
               //not done until every field filed otherwise not add to hive
-
               final box = Boxes.getAccounts();
-              final account = PassWordManager()
-                ..accountName = '${accName.text}'
-                ..emailId = '${emailId.text}'
-                ..passWord = '${passWord.text}'
-                ..hints = '${hintMy.text}'
-                ..colorTag = myColor.value
-                ..createdDate = DateTime.now();
-              box.add(account);
+
               //box.clear();
               // if (box.length == 0) {
               //   indexhandler.badgeConuter.value = 0;
@@ -218,6 +210,14 @@ class GroupPage extends StatelessWidget {
                     backgroundColor: Colors.red,
                     onConfirm: () => Get.back());
               } else {
+                final account = PassWordManager()
+                  ..accountName = '${accName.text}'
+                  ..emailId = '${emailId.text}'
+                  ..passWord = '${passWord.text}'
+                  ..hints = '${hintMy.text}'
+                  ..colorTag = myColor.value
+                  ..createdDate = DateTime.now();
+                box.add(account);
                 Get.toNamed('/home');
               }
             },
