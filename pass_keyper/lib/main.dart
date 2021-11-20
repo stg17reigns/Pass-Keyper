@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:pass_keyper/Models/box_model.dart';
 import 'package:pass_keyper/Models/password_model.dart';
 import 'package:pass_keyper/Pages/edit_page.dart';
 import 'package:pass_keyper/Pages/group_page.dart';
