@@ -5,4 +5,5 @@ import 'package:pass_keyper/Pages/group_page.dart';
 class Boxes {
   static Box<PassWordManager> getAccounts() =>
       Hive.box<PassWordManager>('Passwords');
+  static Box<int> getBadge() => Hive.box<int>('Badge');
 }

@@ -86,7 +86,9 @@ class HomePage extends StatelessWidget {
             borderRadius: const Radius.circular(20),
             items: [
               CustomNavigationBarItem(
-                badgeCount: indexhandler.badgeConuter.value,
+                badgeCount: Boxes.getBadge().get('Badge_No.') == null
+                    ? 0
+                    : Boxes.getBadge().get('Badge_No.')!.toInt(),
                 showBadge: true, //imp use
                 icon: const Icon(Icons.home),
                 title: const Text(
@@ -127,6 +129,14 @@ class HomePage extends StatelessWidget {
               onTap: () {
                 // ignore: avoid_print
                 //go in detail page of account
+                Get.toNamed('/edit', parameters: {
+                  'index': index.toString(),
+                  'acc': account.accountName,
+                  'email': account.emailId,
+                  'pass': account.passWord,
+                  'hint': account.hints,
+                  'color': account.colorTag.toString()
+                });
                 return print(index);
               },
               child: Container(

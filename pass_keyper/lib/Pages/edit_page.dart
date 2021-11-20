@@ -8,8 +8,8 @@ import 'package:pass_keyper/Controllers/navbar_controller.dart';
 import 'package:pass_keyper/Models/box_model.dart';
 import 'package:pass_keyper/Models/password_model.dart';
 
-class GroupPage extends StatelessWidget {
-  const GroupPage({Key? key}) : super(key: key);
+class EditPage extends StatelessWidget {
+  const EditPage({Key? key}) : super(key: key);
 
 //make controller for this page
   @override
@@ -18,10 +18,33 @@ class GroupPage extends StatelessWidget {
     TextEditingController emailId = TextEditingController();
     TextEditingController passWord = TextEditingController();
     TextEditingController hintMy = TextEditingController();
+    Color myColor = Colors.red;
+    late int index;
+
+    Get.parameters.forEach((key, value) {
+      if (key == 'index') {
+        index = int.parse(value!);
+      }
+
+      if (key == 'acc') {
+        accName.text = value!;
+      }
+      if (key == 'email') {
+        emailId.text = value!;
+      }
+      if (key == 'pass') {
+        passWord.text = value!;
+      }
+      if (key == 'hint') {
+        hintMy.text = value!;
+      }
+      if (key == 'color') {
+        myColor = Color(int.parse(value!));
+      }
+    });
     //bool obsecuretext = true;
     final groupController = Get.find<GroupController>();
     final indexhandler = Get.find<NavBarConteroller>();
-    Color myColor = Colors.red;
     return Scaffold(
       body: Center(
         child: Container(
@@ -170,7 +193,7 @@ class GroupPage extends StatelessWidget {
                         },
                         child: CircleAvatar(
                           radius: 15,
-                          backgroundColor: groupController.myColor.value,
+                          backgroundColor: myColor,
                         ),
                       ),
                     ),
@@ -188,7 +211,6 @@ class GroupPage extends StatelessWidget {
             heroTag: 'Save',
             onPressed: () {
               //not done until every field filed otherwise not add to hive
-
               final box = Boxes.getAccounts();
               final account = PassWordManager()
                 ..accountName = '${accName.text}'
@@ -197,29 +219,17 @@ class GroupPage extends StatelessWidget {
                 ..hints = '${hintMy.text}'
                 ..colorTag = myColor.value
                 ..createdDate = DateTime.now();
-              box.add(account);
+              box.putAt(index, account);
               //box.clear();
-              // if (box.length == 0) {
-              //   indexhandler.badgeConuter.value = 0;
-              // }
               //do this at start of the page use (Getx Prefernce)
               indexhandler.badgeConuter.value = box.length;
               final badge = Boxes.getBadge();
               badge.put('Badge_No.', indexhandler.badgeConuter.value);
               print(box.get('A1')?.colorTag);
               print(Boxes.getAccounts());
-              if (accName.text == '' ||
-                  emailId.text == '' ||
-                  passWord.text == '') {
-                Get.defaultDialog(
-                    title: 'Important Message !!',
-                    titleStyle: TextStyle(color: Colors.black),
-                    middleText: 'Please Fill All Fields... Then only SAVE',
-                    backgroundColor: Colors.red,
-                    onConfirm: () => Get.back());
-              } else {
-                Get.toNamed('/home');
-              }
+
+              Get.toNamed('/home');
+              return;
             },
             child: const Icon(
               Icons.done,
@@ -231,14 +241,20 @@ class GroupPage extends StatelessWidget {
             width: 20,
           ),
           FloatingActionButton(
-            heroTag: 'Go_back',
+            heroTag: 'Delete',
             backgroundColor: Colors.red,
             onPressed: () {
+              //delete
+              final box = Boxes.getAccounts();
+              Boxes.getAccounts().deleteAt(index);
+              indexhandler.badgeConuter.value = box.length;
+              final badge = Boxes.getBadge();
+              badge.put('Badge_No.', indexhandler.badgeConuter.value);
               Get.toNamed('/home');
               return;
             },
             child: const Icon(
-              Icons.highlight_remove_rounded,
+              Icons.delete_forever_rounded,
               size: 25,
               color: Colors.black,
             ),
