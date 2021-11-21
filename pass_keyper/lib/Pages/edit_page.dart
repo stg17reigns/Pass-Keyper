@@ -193,7 +193,7 @@ class EditPage extends StatelessWidget {
                         },
                         child: CircleAvatar(
                           radius: 15,
-                          backgroundColor: myColor,
+                          backgroundColor: groupController.myColor.value,
                         ),
                       ),
                     ),
