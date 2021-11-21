@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
@@ -8,6 +10,7 @@ import 'package:pass_keyper/Pages/group_page.dart';
 import 'package:pass_keyper/Pages/settings_page.dart';
 import 'package:pass_keyper/Services/home_bindings.dart';
 import 'Pages/home_page.dart';
+import 'Services/local_auth_api.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -21,11 +24,22 @@ Future main() async {
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
+    Future<bool> buildButton() async {
+      final isAuthenticated = await LocalAuthApi.authenticate();
+
+      if (isAuthenticated) {
+        return true;
+      }
+      exit(0);
+    }
+
     return GetMaterialApp(
       title: 'My Pass Keyper',
       debugShowCheckedModeBanner: false,
+      onInit: buildButton,
       theme: ThemeData(
         //do something about this
         primarySwatch: Colors.green,
