@@ -195,9 +195,9 @@ class GroupPage extends StatelessWidget {
               //   indexhandler.badgeConuter.value = 0;
               // }
               //do this at start of the page use (Getx Prefernce)
-              indexhandler.badgeConuter.value = box.length;
+
               final badge = Boxes.getBadge();
-              badge.put('Badge_No.', indexhandler.badgeConuter.value);
+
               print(box.get('A1')?.colorTag);
               print(Boxes.getAccounts());
               if (accName.text == '' ||
@@ -218,6 +218,8 @@ class GroupPage extends StatelessWidget {
                   ..colorTag = myColor.value
                   ..createdDate = DateTime.now();
                 box.add(account);
+                indexhandler.badgeConuter.value = box.length;
+                badge.put('Badge_No.', indexhandler.badgeConuter.value);
                 Get.toNamed('/home');
               }
             },
