@@ -7,6 +7,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:pass_keyper/Models/password_model.dart';
 import 'package:pass_keyper/Pages/edit_page.dart';
 import 'package:pass_keyper/Pages/group_page.dart';
+import 'package:pass_keyper/Pages/passwordgenerator_page.dart';
 import 'package:pass_keyper/Pages/settings_page.dart';
 import 'package:pass_keyper/Services/home_bindings.dart';
 import 'Pages/home_page.dart';
@@ -65,6 +66,11 @@ class MyApp extends StatelessWidget {
         GetPage(
           name: '/edit',
           page: () => const EditPage(),
+          binding: HomeBinding(),
+        ),
+        GetPage(
+          name: '/passwordgenerator',
+          page: () => const PasswordGenerator(),
           binding: HomeBinding(),
         )
       ],
