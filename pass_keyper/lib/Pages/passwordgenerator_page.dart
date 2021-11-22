@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:get/get.dart';
 
 class PasswordGenerator extends StatelessWidget {
   const PasswordGenerator({Key? key}) : super(key: key);
@@ -10,27 +12,31 @@ class PasswordGenerator extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Password Generator'),
       ),
-      body: Container(
+      body: SingleChildScrollView(
+        //something
         child: Padding(
           padding: const EdgeInsets.all(10.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
-                  height: 30,
-                  width: 200,
-                  decoration: BoxDecoration(
-                    color: Colors.blue[700],
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: const Center(child: Text('Enter Your Password'))),
+                height: 30,
+                width: 200,
+                decoration: BoxDecoration(
+                  color: Colors.blue[700],
+                  borderRadius: BorderRadius.circular(5),
+                ),
+                child: const Center(
+                  child: Text('Enter Your Password'),
+                ),
+              ),
               const SizedBox(
                 height: 20,
               ),
               TextField(
                 controller: txt,
                 decoration: const InputDecoration(
-                  hintText: 'Enter Sample Password',
+                  hintText: 'Enter Sample Password   * Optional *',
                 ),
               ),
               const SizedBox(
@@ -43,7 +49,7 @@ class PasswordGenerator extends StatelessWidget {
                     width: 100,
                     decoration: BoxDecoration(
                       color: Colors.green[700],
-                      borderRadius: BorderRadius.circular(10),
+                      borderRadius: BorderRadius.circular(15),
                     ),
                     child: const Center(child: Text('Generate'))),
               ),
@@ -106,7 +112,7 @@ class PasswordGenerator extends StatelessWidget {
                   width: 200,
                   decoration: BoxDecoration(
                     color: Colors.blue[700],
-                    borderRadius: BorderRadius.circular(10),
+                    borderRadius: BorderRadius.circular(5),
                   ),
                   child: const Center(child: Text('Generated Password'))),
               const SizedBox(
@@ -127,6 +133,17 @@ class PasswordGenerator extends StatelessWidget {
                   IconButton(
                     onPressed: () {
                       print(txt.text);
+                      Clipboard.setData(ClipboardData(text: "${txt.text}"))
+                          .then(
+                        (value) => Get.snackbar(
+                          'Clipboard',
+                          'Copied to Clipboard',
+                          barBlur: 1,
+                          dismissDirection: SnackDismissDirection.HORIZONTAL,
+                          snackPosition: SnackPosition.BOTTOM,
+                          margin: EdgeInsets.all(10),
+                        ),
+                      );
                     },
                     icon: Icon(Icons.copy),
                   )
