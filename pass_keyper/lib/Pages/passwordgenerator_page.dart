@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -18,6 +19,7 @@ class PasswordGenerator extends StatelessWidget {
       ),
       body: Obx(() {
         return SingleChildScrollView(
+          reverse: true,
           //something
           child: Padding(
             padding: const EdgeInsets.all(10.0),
