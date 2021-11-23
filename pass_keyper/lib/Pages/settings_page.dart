@@ -73,11 +73,16 @@ class SettingsPage extends StatelessWidget {
                   borderRadius: BorderRadius.circular(10),
                   color: Colors.purple,
                 ),
-                child: const Center(
-                  child: Text(
-                    'Licences',
-                    style: TextStyle(
-                      fontSize: 20,
+                child: InkWell(
+                  onTap: () {
+                    Get.toNamed('/licences');
+                  },
+                  child: const Center(
+                    child: Text(
+                      'Licences',
+                      style: TextStyle(
+                        fontSize: 20,
+                      ),
                     ),
                   ),
                 ),
