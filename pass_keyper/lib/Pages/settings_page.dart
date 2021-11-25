@@ -26,11 +26,19 @@ class SettingsPage extends StatelessWidget {
                   borderRadius: BorderRadius.circular(10),
                   color: Colors.orange,
                 ),
-                child: const Center(
-                  child: Text(
-                    'Backup',
-                    style: TextStyle(
-                      fontSize: 20,
+                child: InkWell(
+                  onTap: () {
+                    Get.defaultDialog(
+                      title: 'Coming Soon!',
+                      middleText: 'Please wait. Sorry for Inconvenience',
+                    );
+                  },
+                  child: const Center(
+                    child: Text(
+                      'Backup',
+                      style: TextStyle(
+                        fontSize: 20,
+                      ),
                     ),
                   ),
                 ),
