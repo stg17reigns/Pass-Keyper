@@ -35,7 +35,7 @@ class SettingsPage extends StatelessWidget {
                   },
                   child: const Center(
                     child: Text(
-                      'Backup',
+                      'Set AppLock',
                       style: TextStyle(
                         fontSize: 20,
                       ),
