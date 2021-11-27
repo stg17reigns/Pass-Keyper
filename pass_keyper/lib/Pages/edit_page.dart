@@ -48,7 +48,7 @@ class EditPage extends StatelessWidget {
     return Scaffold(
       body: Center(
         child: Container(
-          height: 400,
+          height: 430,
           width: 300,
           decoration: BoxDecoration(
             color: Colors.white54,
@@ -149,7 +149,10 @@ class EditPage extends StatelessWidget {
                         width: 200,
                         color: Colors.black,
                         child: const Center(
-                          child: Text('Change Color as per Priority'),
+                          child: Text(
+                            'Change Color as per Priority',
+                            style: TextStyle(fontSize: 10),
+                          ),
                         ),
                       ),
                     ),
