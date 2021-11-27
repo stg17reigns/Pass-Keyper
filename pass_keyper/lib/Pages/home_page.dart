@@ -38,7 +38,7 @@ class HomePage extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.fromLTRB(5, 15, 0, 0),
               child: Container(
-                height: MediaQuery.of(context).size.height / 13,
+                height: MediaQuery.of(context).size.height / 15,
                 alignment: Alignment.center,
                 child: const Text(
                   'Pass-Kryper',
@@ -71,7 +71,7 @@ class HomePage extends StatelessWidget {
           ],
         ),
         bottomNavigationBar: Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.fromLTRB(3, 1, 3, 5),
           child: CustomNavigationBar(
             currentIndex: indexhandler.index.value,
             onTap: (navindex) {
@@ -93,21 +93,21 @@ class HomePage extends StatelessWidget {
                 icon: const Icon(Icons.home),
                 title: const Text(
                   'Home',
-                  style: TextStyle(color: Colors.black),
+                  style: TextStyle(color: Colors.black ,fontSize: 10),
                 ),
               ),
               CustomNavigationBarItem(
                 icon: const Icon(Icons.new_label),
                 title: const Text(
                   'New Account',
-                  style: TextStyle(color: Colors.black),
+                  style: TextStyle(color: Colors.black, fontSize: 10),
                 ),
               ),
               CustomNavigationBarItem(
                 icon: const Icon(Icons.settings),
                 title: const Text(
                   'Settings',
-                  style: TextStyle(color: Colors.black),
+                  style: TextStyle(color: Colors.black, fontSize: 10),
                 ),
               )
             ],

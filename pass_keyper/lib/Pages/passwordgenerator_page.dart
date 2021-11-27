@@ -43,7 +43,7 @@ class PasswordGenerator extends StatelessWidget {
                 TextField(
                   controller: txt,
                   decoration: const InputDecoration(
-                    hintText: 'Enter Sample Password   * Optional *',
+                    hintText: 'Enter Sample Password *Optional*',
                   ),
                 ),
                 const SizedBox(
@@ -94,7 +94,7 @@ class PasswordGenerator extends StatelessWidget {
                               : radioController.specialChar.value = 0;
                         },
                       ),
-                      Text('Select For Including     !, @, #, \$, %, &, *')
+                      Text('Select For Including !, @, #, \$, %, &, *')
                     ],
                   ),
                 ),
@@ -112,7 +112,7 @@ class PasswordGenerator extends StatelessWidget {
                               : radioController.numberData.value = 1;
                         },
                       ),
-                      Text('Select For Including     0-9')
+                      Text('Select For Including 0-9')
                     ],
                   ),
                 ),
@@ -130,7 +130,7 @@ class PasswordGenerator extends StatelessWidget {
                               : radioController.capitalAlpha.value = 1;
                         },
                       ),
-                      Text('Select For Including     A-Z')
+                      Text('Select For Including A-Z')
                     ],
                   ),
                 ),
@@ -148,7 +148,7 @@ class PasswordGenerator extends StatelessWidget {
                               : radioController.smallAlpha.value = 1;
                         },
                       ),
-                      Text('Select For Including     a-z')
+                      Text('Select For Including a-z')
                     ],
                   ),
                 ),
