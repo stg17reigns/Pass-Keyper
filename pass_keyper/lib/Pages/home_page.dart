@@ -49,24 +49,54 @@ class HomePage extends StatelessWidget {
               ),
             ),
             Expanded(
-              child: Padding(
-                padding: const EdgeInsets.fromLTRB(5, 15, 5, 15),
-                child: Container(
-                  height: MediaQuery.of(context).size.height / 1.4,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: ValueListenableBuilder<Box<PassWordManager>>(
-                    valueListenable: Boxes.getAccounts().listenable(),
-                    builder: (context, box, _) {
-                      final accounts =
-                          box.values.toList().cast<PassWordManager>();
-                      return scrollerWidget(accounts);
-                    },
-                  ),
-                ),
-              ),
+              child: Boxes.getBadge().get('Badge_No.') == 0
+                  ? Center(
+                      child: Container(
+                        height: 50,
+                        width: 200,
+                        decoration: BoxDecoration(
+                            shape: BoxShape.rectangle,
+                            boxShadow: const [
+                              BoxShadow(
+                                color: Colors.purple,
+                                blurRadius: 10,
+                                offset: Offset(10, -10),
+                              ),
+                              BoxShadow(
+                                color: Colors.teal,
+                                blurRadius: 10,
+                                offset: Offset(5, -10),
+                              ),
+                            ],
+                            color: Colors.red[300],
+                            borderRadius: BorderRadius.circular(10)),
+                        child: const Text(
+                          'Empty!! Try Making\n New Account',
+                          style: TextStyle(
+                            fontSize: 20,
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                    )
+                  : Padding(
+                      padding: const EdgeInsets.fromLTRB(5, 15, 5, 15),
+                      child: Container(
+                        height: MediaQuery.of(context).size.height / 1.4,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: ValueListenableBuilder<Box<PassWordManager>>(
+                          valueListenable: Boxes.getAccounts().listenable(),
+                          builder: (context, box, _) {
+                            final accounts =
+                                box.values.toList().cast<PassWordManager>();
+                            return scrollerWidget(accounts);
+                          },
+                        ),
+                      ),
+                    ),
             ), //scrollable accounts
           ],
         ),
@@ -93,7 +123,7 @@ class HomePage extends StatelessWidget {
                 icon: const Icon(Icons.home),
                 title: const Text(
                   'Home',
-                  style: TextStyle(color: Colors.black ,fontSize: 10),
+                  style: TextStyle(color: Colors.black, fontSize: 10),
                 ),
               ),
               CustomNavigationBarItem(
