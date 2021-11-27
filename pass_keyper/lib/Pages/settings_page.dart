@@ -17,32 +17,6 @@ class SettingsPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Container(
-                padding: const EdgeInsets.all(10),
-                height: 100,
-                width: 300,
-                decoration: BoxDecoration(
-                  shape: BoxShape.rectangle,
-                  borderRadius: BorderRadius.circular(10),
-                  color: Colors.orange,
-                ),
-                child: InkWell(
-                  onTap: () {
-                    Get.defaultDialog(
-                      title: 'Coming Soon!',
-                      middleText: 'Please wait. Sorry for Inconvenience',
-                    );
-                  },
-                  child: const Center(
-                    child: Text(
-                      'Set AppLock',
-                      style: TextStyle(
-                        fontSize: 20,
-                      ),
-                    ),
-                  ),
-                ),
-              ),
               const SizedBox(
                 height: 10,
               ),
