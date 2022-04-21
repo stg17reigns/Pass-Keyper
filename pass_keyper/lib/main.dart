@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:pass_keyper/Models/password_model.dart';
+import 'package:pass_keyper/Pages/attribution_page.dart';
+import 'package:pass_keyper/Pages/auth_me.dart';
 import 'package:pass_keyper/Pages/edit_page.dart';
 import 'package:pass_keyper/Pages/group_page.dart';
 import 'package:pass_keyper/Pages/licences_page.dart';
@@ -27,15 +28,19 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      title: 'My Pass Keyper',
+      title: 'Pass Keyper',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         //do something about this
         primarySwatch: Colors.green,
         brightness: Brightness.dark,
       ),
-      initialRoute: '/home',
+      initialRoute: '/auth',
       getPages: [
+        GetPage(
+          name: '/auth',
+          page: () => const AuthMe(),
+        ),
         GetPage(
           name: '/home',
           page: () => const HomePage(),
@@ -65,6 +70,10 @@ class MyApp extends StatelessWidget {
           name: '/licences',
           page: () => LicensesSimplePage(),
           binding: HomeBinding(),
+        ),
+        GetPage(
+          name: '/attribute',
+          page: () => const Attribution_Page(),
         ),
       ],
     );

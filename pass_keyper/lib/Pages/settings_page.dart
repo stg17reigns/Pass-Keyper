@@ -15,7 +15,7 @@ class SettingsPage extends StatelessWidget {
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               const SizedBox(
                 height: 10,
@@ -79,18 +79,15 @@ class SettingsPage extends StatelessWidget {
                 decoration: BoxDecoration(
                   shape: BoxShape.rectangle,
                   borderRadius: BorderRadius.circular(10),
-                  color: Colors.blueGrey,
+                  color: Color.fromARGB(255, 39, 135, 176),
                 ),
                 child: InkWell(
                   onTap: () {
-                    Get.defaultDialog(
-                      title: 'Coming Soon!',
-                      middleText: 'Please wait. Sorry for Inconvenience',
-                    );
+                    Get.toNamed('/attribute');
                   },
                   child: const Center(
                     child: Text(
-                      'Share App',
+                      'Attribution Added',
                       style: TextStyle(
                         fontSize: 20,
                       ),

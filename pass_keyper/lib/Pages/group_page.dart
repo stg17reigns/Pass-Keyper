@@ -24,161 +24,164 @@ class GroupPage extends StatelessWidget {
     Color myColor = Colors.red;
     return Scaffold(
       body: Center(
-        child: Container(
-          height: 430,
-          width: 300,
-          decoration: BoxDecoration(
-            color: Colors.white54,
-            borderRadius: BorderRadius.circular(10),
-          ),
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Obx(() {
-              return Column(
-                //mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Text(
-                    'Account Name',
-                    style: TextStyle(
-                        color: Colors.black, fontWeight: FontWeight.bold),
-                  ),
-                  TextField(
-                    controller: accName,
-                    cursorColor: Colors.amber,
-                    decoration: const InputDecoration(
-                      hintText: 'eg: Facebook',
+        child: SingleChildScrollView(
+          reverse: true,
+          child: Container(
+            height: 430,
+            width: 300,
+            decoration: BoxDecoration(
+              color: Colors.white54,
+              borderRadius: BorderRadius.circular(10),
+            ),
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Obx(() {
+                return Column(
+                  //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Text(
+                      'Account Name',
+                      style: TextStyle(
+                          color: Colors.black, fontWeight: FontWeight.bold),
                     ),
-                    textCapitalization: TextCapitalization.words,
-                  ),
-                  const SizedBox(
-                    height: 15,
-                  ),
-                  const Text(
-                    'Email Id',
-                    style: TextStyle(
-                        color: Colors.black, fontWeight: FontWeight.bold),
-                  ),
-                  TextField(
-                    decoration: const InputDecoration(
-                      hintText: 'eg: My_Name@stg.com',
-                    ),
-                    controller: emailId,
-                    cursorColor: Colors.amber,
-                    textCapitalization: TextCapitalization.words,
-                  ),
-                  const SizedBox(
-                    height: 15,
-                  ),
-                  const Text(
-                    'Password',
-                    style: TextStyle(
-                        color: Colors.black, fontWeight: FontWeight.bold),
-                  ),
-                  TextField(
-                    obscuringCharacter: '\$',
-                    controller: passWord,
-                    decoration: InputDecoration(
-                      hintText: 'eg: Password',
-                      suffixIcon: InkWell(
-                        onTap: () {
-                          groupController.obsecuretext.value == true
-                              ? groupController.obsecuretext.value = false
-                              : groupController.obsecuretext.value = true;
-                        },
-                        child: groupController.obsecuretext.value == true
-                            ? const Icon(
-                                Icons.visibility_off,
-                                color: Colors.white,
-                              )
-                            : const Icon(
-                                Icons.visibility,
-                                color: Colors.white,
-                              ),
+                    TextField(
+                      controller: accName,
+                      cursorColor: Colors.amber,
+                      decoration: const InputDecoration(
+                        hintText: 'eg: Facebook',
                       ),
+                      textCapitalization: TextCapitalization.words,
                     ),
-                    cursorColor: Colors.amber,
-                    obscureText: groupController
-                        .obsecuretext.value, //make obscure off button
-                    textCapitalization: TextCapitalization.words,
-                  ),
-                  const SizedBox(
-                    height: 15,
-                  ),
-                  const Text(
-                    'Hint',
-                    style: TextStyle(
-                        color: Colors.black, fontWeight: FontWeight.bold),
-                  ),
-                  TextField(
-                    decoration: const InputDecoration(
-                      hintText: 'eg: First_Special_Char_Last',
+                    const SizedBox(
+                      height: 15,
                     ),
-                    controller: hintMy,
-                    cursorColor: Colors.amber,
-                    textCapitalization: TextCapitalization.words,
-                  ),
-                  Center(
-                    child: Padding(
-                      padding: const EdgeInsets.fromLTRB(0, 5, 0, 0),
-                      child: Container(
-                        height: 20,
-                        width: 200,
-                        color: Colors.black,
-                        child: const Center(
-                          child: Text(
-                            'Change Color as per Priority',
-                            style: TextStyle(fontSize: 10),
+                    const Text(
+                      'Email Id',
+                      style: TextStyle(
+                          color: Colors.black, fontWeight: FontWeight.bold),
+                    ),
+                    TextField(
+                      decoration: const InputDecoration(
+                        hintText: 'eg: My_Name@stg.com',
+                      ),
+                      controller: emailId,
+                      cursorColor: Colors.amber,
+                      textCapitalization: TextCapitalization.words,
+                    ),
+                    const SizedBox(
+                      height: 15,
+                    ),
+                    const Text(
+                      'Password',
+                      style: TextStyle(
+                          color: Colors.black, fontWeight: FontWeight.bold),
+                    ),
+                    TextField(
+                      obscuringCharacter: '\$',
+                      controller: passWord,
+                      decoration: InputDecoration(
+                        hintText: 'eg: Password',
+                        suffixIcon: InkWell(
+                          onTap: () {
+                            groupController.obsecuretext.value == true
+                                ? groupController.obsecuretext.value = false
+                                : groupController.obsecuretext.value = true;
+                          },
+                          child: groupController.obsecuretext.value == true
+                              ? const Icon(
+                                  Icons.visibility_off,
+                                  color: Colors.white,
+                                )
+                              : const Icon(
+                                  Icons.visibility,
+                                  color: Colors.white,
+                                ),
+                        ),
+                      ),
+                      cursorColor: Colors.amber,
+                      obscureText: groupController
+                          .obsecuretext.value, //make obscure off button
+                      textCapitalization: TextCapitalization.words,
+                    ),
+                    const SizedBox(
+                      height: 15,
+                    ),
+                    const Text(
+                      'Hint',
+                      style: TextStyle(
+                          color: Colors.black, fontWeight: FontWeight.bold),
+                    ),
+                    TextField(
+                      decoration: const InputDecoration(
+                        hintText: 'eg: First_Special_Char_Last',
+                      ),
+                      controller: hintMy,
+                      cursorColor: Colors.amber,
+                      textCapitalization: TextCapitalization.words,
+                    ),
+                    Center(
+                      child: Padding(
+                        padding: const EdgeInsets.fromLTRB(0, 5, 0, 0),
+                        child: Container(
+                          height: 20,
+                          width: 200,
+                          color: Colors.black,
+                          child: const Center(
+                            child: Text(
+                              'Change Color as per Priority',
+                              style: TextStyle(fontSize: 10),
+                            ),
                           ),
                         ),
                       ),
                     ),
-                  ),
-                  Center(
-                    child: Padding(
-                      padding: const EdgeInsets.all(10),
-                      child: InkWell(
-                        onTap: () {
-                          Get.defaultDialog(
-                            title: 'Select Color',
-                            content: Column(
-                              children: [
-                                ColorPicker(
-                                  colorPickerWidth: 200,
-                                  pickerAreaHeightPercent: 0.5,
-                                  pickerAreaBorderRadius:
-                                      BorderRadius.circular(10),
-                                  enableAlpha: false,
-                                  // ignore: deprecated_member_use
-                                  showLabel: false,
-                                  pickerColor: groupController.myColor.value,
-                                  onColorChanged: (color) {
-                                    groupController.myColor.value = color;
-                                    myColor = color;
-                                  },
-                                ),
-                              ],
-                            ),
-                            confirm: ElevatedButton(
-                              onPressed: () {
-                                print('done');
-                                return Get.back();
-                              },
-                              child: const Text('Done'),
-                            ),
-                          );
-                          return print('change color');
-                        },
-                        child: CircleAvatar(
-                          radius: 15,
-                          backgroundColor: groupController.myColor.value,
+                    Center(
+                      child: Padding(
+                        padding: const EdgeInsets.all(10),
+                        child: InkWell(
+                          onTap: () {
+                            Get.defaultDialog(
+                              title: 'Select Color',
+                              content: Column(
+                                children: [
+                                  ColorPicker(
+                                    colorPickerWidth: 200,
+                                    pickerAreaHeightPercent: 0.5,
+                                    pickerAreaBorderRadius:
+                                        BorderRadius.circular(10),
+                                    enableAlpha: false,
+                                    // ignore: deprecated_member_use
+                                    showLabel: false,
+                                    pickerColor: groupController.myColor.value,
+                                    onColorChanged: (color) {
+                                      groupController.myColor.value = color;
+                                      myColor = color;
+                                    },
+                                  ),
+                                ],
+                              ),
+                              confirm: ElevatedButton(
+                                onPressed: () {
+                                  print('done');
+                                  return Get.back();
+                                },
+                                child: const Text('Done'),
+                              ),
+                            );
+                            return print('change color');
+                          },
+                          child: CircleAvatar(
+                            radius: 15,
+                            backgroundColor: groupController.myColor.value,
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                ],
-              );
-            }),
+                  ],
+                );
+              }),
+            ),
           ),
         ),
       ),

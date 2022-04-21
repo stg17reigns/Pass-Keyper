@@ -180,8 +180,8 @@ class PasswordGenerator extends StatelessWidget {
                     ),
                     IconButton(
                       onPressed: () {
-                        print(txt.text);
-                        Clipboard.setData(ClipboardData(text: "${txt.text}"))
+                        print(Gentxt.text);
+                        Clipboard.setData(ClipboardData(text: "${Gentxt.text}"))
                             .then(
                           (value) => Get.snackbar(
                             'Clipboard',

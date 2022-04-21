@@ -41,7 +41,7 @@ class HomePage extends StatelessWidget {
                 height: MediaQuery.of(context).size.height / 15,
                 alignment: Alignment.center,
                 child: const Text(
-                  'Pass-Kryper',
+                  'Pass Keyper',
                   style: TextStyle(
                     fontSize: 20,
                   ),
@@ -84,7 +84,10 @@ class HomePage extends StatelessWidget {
                       child: Container(
                         height: MediaQuery.of(context).size.height / 1.4,
                         decoration: BoxDecoration(
-                          color: Colors.white,
+                          image: const DecorationImage(
+                              image: AssetImage('assets/Bg.png'),
+                              fit: BoxFit.cover,
+                              opacity: 0.3),
                           borderRadius: BorderRadius.circular(10),
                         ),
                         child: ValueListenableBuilder<Box<PassWordManager>>(
