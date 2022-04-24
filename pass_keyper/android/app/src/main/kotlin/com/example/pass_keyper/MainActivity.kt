@@ -1,4 +1,4 @@
-package com.example.pass_keyper
+package com.stg_reigns.pass_keyper
 
 import io.flutter.embedding.android.FlutterFragmentActivity
 import io.flutter.plugins.GeneratedPluginRegistrant
