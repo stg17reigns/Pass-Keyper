@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.pass_keyper">
+    package="com.stg_reigns.pass_keyper">
    <uses-permission android:name="android.permission.USE_FINGERPRINT"/>
    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
    <application

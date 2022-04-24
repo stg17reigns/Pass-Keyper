@@ -46,7 +46,12 @@ class _AuthMeState extends State<AuthMe> {
   Future<void> _authbio() async {
     bool authen = false;
     try {
-      authen = await auth.authenticate(localizedReason: 'Please Authenticate');
+      authen = await auth.authenticate(
+        localizedReason: 'Please Authenticate',
+        options: const AuthenticationOptions(
+          stickyAuth: true,
+        ),
+      );
     } on PlatformException catch (e) {
       print(e);
     }
@@ -73,6 +78,7 @@ class _AuthMeState extends State<AuthMe> {
   @override
   Widget build(BuildContext context) {
     print("AUTH ME");
+    print(MediaQuery.of(context).size.width);
     return Scaffold(
         body: Column(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -91,26 +97,31 @@ class _AuthMeState extends State<AuthMe> {
             padding: EdgeInsets.all(10),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(5),
-              color: Color.fromARGB(255, 86, 90, 88),
+              color: const Color.fromARGB(255, 86, 90, 88),
             ),
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Text(
-                    'Authentication Status:',
-                    style: TextStyle(color: Color.fromARGB(255, 255, 255, 255)),
+                  const Flexible(
+                    child: Text(
+                      'Authentication Status:',
+                      style:
+                          TextStyle(color: Color.fromARGB(255, 255, 255, 255)),
+                    ),
                   ),
                   const SizedBox(
                     width: 10,
                   ),
-                  Text(
-                    '$_authStatus',
-                    style: TextStyle(
-                        color: _authStatus == "Authenticated"
-                            ? Color.fromARGB(255, 147, 235, 150)
-                            : Colors.red),
+                  Flexible(
+                    child: Text(
+                      '$_authStatus',
+                      style: TextStyle(
+                          color: _authStatus == "Authenticated"
+                              ? const Color.fromARGB(255, 147, 235, 150)
+                              : Colors.red),
+                    ),
                   )
                 ],
               ),
