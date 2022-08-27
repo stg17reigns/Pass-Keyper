@@ -110,7 +110,7 @@ class SettingsPage extends StatelessWidget {
                 child: InkWell(
                   onTap: () async {
                     Email email = Email(
-                        to: ['statsapp.qa8kf@dralias.com'],
+                        to: ['passkeyper.1guos@aleeas.com'],
                         subject: 'Feedback',
                         body: 'Write Your Problem.');
                     await EmailLauncher.launch(email);
